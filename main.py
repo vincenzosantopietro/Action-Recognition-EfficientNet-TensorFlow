@@ -49,7 +49,7 @@ def main(arguments):
         # Model evaluation
         results = model.evaluate(test_dataset)
         print("Accuracy on test set: {}".format(results[-1]))
-    except tf.python.errors_impl.ResourceExhaustedError as e:
+    except Exception as e:
         print("{}".format(e))
         exit(0)
 
