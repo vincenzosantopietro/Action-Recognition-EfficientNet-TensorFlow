@@ -20,7 +20,7 @@ def main(arguments):
     num_classes = len(loader.get_classes())
 
     """
-    simple model for fast experimentation
+    # simple model for fast experimentation
     model = tf.keras.Sequential([
         # layers.experimental.preprocessing.Rescaling(1. / 255),
         layers.Conv2D(32, 3, activation='relu'),
@@ -34,20 +34,24 @@ def main(arguments):
         layers.Dense(num_classes)
     ])
     """
+
     # Get the right EfficientNet model & compile
     model = get_model_from_id(input_shape=INPUT_SHAPE, model_id=arguments.efficientnet_id, num_classes=num_classes)
-    model.summary()
+
     model.compile(optimizer='adam', loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True),
                   metrics=['accuracy'])
-
+    model.summary()
     # Get the list of callbacks and fit the model
     cbks = get_callbacks_list(arguments.efficientnet_id)
-    model.fit(train_dataset, validation_data=val_dataset, epochs=arguments.epochs, callbacks=cbks, use_multiprocessing=True)
+    try:
+        model.fit(train_dataset, validation_data=val_dataset, epochs=arguments.epochs, callbacks=cbks, use_multiprocessing=True)
 
-    # Model evaluation
-    results = model.evaluate(test_dataset)
-    print("Accuracy on test set: {}".format(results[-1]))
-
+        # Model evaluation
+        results = model.evaluate(test_dataset)
+        print("Accuracy on test set: {}".format(results[-1]))
+    except tf.python.errors_impl.ResourceExhaustedError as e:
+        print("{}".format(e))
+        exit(0)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
