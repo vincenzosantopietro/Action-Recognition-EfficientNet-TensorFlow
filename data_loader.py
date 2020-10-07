@@ -23,7 +23,7 @@ class DataLoader:
             validation_split=0.2,
             subset="training",
             seed=123,
-            image_size=(self.image_shape[1], self.image_shape[0]),
+            image_size=(self.image_shape[0], self.image_shape[1]),
             batch_size=self.batch_size
         )
 
@@ -32,13 +32,13 @@ class DataLoader:
             validation_split=0.2,
             subset="validation",
             seed=123,
-            image_size=(self.image_shape[1], self.image_shape[0]),
+            image_size=(self.image_shape[0], self.image_shape[1]),
             batch_size=self.batch_size)
 
         self.test_ds = tf.keras.preprocessing.image_dataset_from_directory(
             test_data_dir,
             seed=123,
-            image_size=(self.image_shape[1], self.image_shape[0]),
+            image_size=(self.image_shape[0], self.image_shape[1]),
             batch_size=batch_size
         )
 

@@ -8,7 +8,8 @@ from tensorflow.keras import *
 import argparse
 from utils import get_callbacks_list, get_model_from_id
 
-INPUT_SHAPE = (224, 224, 3)
+INPUT_SHAPE = (320, 240, 3)
+
 
 def main(arguments):
 
@@ -41,11 +42,11 @@ def main(arguments):
 
     # Get the list of callbacks and fit the model
     cbks = get_callbacks_list(arguments.efficientnet_id)
-    model.fit(train_dataset, validation_data=val_dataset, epochs=2, callbacks=cbks, use_multiprocessing=True)
+    model.fit(train_dataset, validation_data=val_dataset, epochs=arguments.epochs, callbacks=cbks, use_multiprocessing=True)
 
     # Model evaluation
     results = model.evaluate(test_dataset)
-    print("Accuracy on test set: {}".format(results))
+    print("Accuracy on test set: {}".format(results[-1]))
 
 
 if __name__ == '__main__':

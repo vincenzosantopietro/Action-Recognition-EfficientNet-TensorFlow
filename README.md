@@ -1,5 +1,5 @@
 # Action recognition from video with EfficientNet models
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vincenzosantopietro/action-recognition-efficientnet/graphs/commit-activity)  [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/vincenzosantopietro/action-recognition-efficientnet/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/vincenzosantopietro/action-recognition-efficientnet/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/vincenzosantopietro/action-recognition-efficientnet/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/vincenzosantopietro/action-recognition-efficientnet/pulls)
 
@@ -36,3 +36,4 @@ This is under development
  - Support for Webcam 
  - Add tests
  - Add table with results in the README
+ - support for OpenVino (?)
