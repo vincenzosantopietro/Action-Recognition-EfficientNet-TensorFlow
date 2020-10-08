@@ -8,7 +8,7 @@ from tensorflow.keras import *
 import argparse
 from utils import get_callbacks_list, get_model_from_id
 
-INPUT_SHAPE = (320, 240, 3)
+INPUT_SHAPE = (220, 200, 3)
 
 
 def main(arguments):
@@ -52,6 +52,7 @@ def main(arguments):
     except Exception as e:
         print("{}".format(e))
         exit(0)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

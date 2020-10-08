@@ -4,7 +4,8 @@ from datetime import datetime
 
 
 def get_callbacks_list(model_id: int) -> list:
-    model_abs_path = os.path.join(os.getcwd(), "models_efficientnetb{}".format(model_id))
+    model_abs_path = os.path.join(os.getcwd(), "models_efficientnetb{}-{}".format(model_id, datetime.now().strftime(
+        "%Y%m%d-%H%M%S")))
     log_path = os.path.join(os.getcwd(), "logs",
                             "efficientnetb{}-{}".format(model_id, datetime.now().strftime("%Y%m%d-%H%M%S")))
 
