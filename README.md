@@ -13,6 +13,10 @@ While training, the network stores the best weights in a dedicated folder, as we
 
 I've also added the weights of an EfficientNetB0 model i've trained that you can use by yourself for inference.
 ![B0 Accuracy](resources/sample_images/b0.PNG) ![B0 Loss](resources/sample_images/b0loss.PNG)
+
+| Model          | Epochs | Training time per epoch (GTX 1080 8GB) | Val Loss | Val Accuracy |
+|----------------|--------|----------------------------------------|----------|--------------|
+| EfficientNetB0 | 10     | ~30 minutes                            | 0.034    | 0.99         |
 ## Environment
 The yaml file exported from my conda environment is available in the repository for the sake of reproducibility.  
 ```shell script
@@ -44,4 +48,3 @@ This is under development
  - Inference script on custom video file
  - Support for Webcam 
  - Add tests
- - Add table with results in the README
