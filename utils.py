@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 import glob
 import sys
+import cv2
 
 EFFICIENTNET_IDS = [0, 1, 2, 3, 4, 5, 6, 7]
 
@@ -10,7 +11,7 @@ EFFICIENTNET_IDS = [0, 1, 2, 3, 4, 5, 6, 7]
 def get_callbacks_list(model_id: int) -> list:
     if model_id not in EFFICIENTNET_IDS:
         raise ValueError("Wrong model ID")
-    
+
     model_abs_path = os.path.join(os.getcwd(), "models_efficientnetb{}-{}".format(model_id, datetime.now().strftime(
         "%Y%m%d-%H%M%S")))
     log_path = os.path.join(os.getcwd(), "logs",
@@ -61,3 +62,18 @@ def get_classes(path: str) -> list:
         return [c.split('\\')[-1] for c in glob.glob("{}\\*".format(path))]
     else:
         return [c.split('/')[-1] for c in glob.glob("{}/*".format(path))]
+
+
+def preprocess_image(img, img_shape: tuple):
+    assert (len(img_shape) == 3)
+    img_pp = cv2.resize(img, img_shape[:-1], interpolation=cv2.INTER_AREA)
+    img_pp = cv2.normalize(img_pp, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
+    return img_pp
+
+
+def write_class_on_img(img, out_class):
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    cv2.putText(img=img, text='class: {}'.format(out_class), org=(30, 10), fontFace=font, fontScale=0.5,
+                color=(0, 255, 0),
+                thickness=2, lineType=cv2.LINE_AA)
+    return img
