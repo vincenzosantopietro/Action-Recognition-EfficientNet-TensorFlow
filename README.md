@@ -45,6 +45,4 @@ The training time depends on your hardware infrastructure: on my "poor" Nvidia G
 This is under development
 
 ## TODO 💥
- - Inference script on custom video file
- - Support for Webcam 
  - Add tests
